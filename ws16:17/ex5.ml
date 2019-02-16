@@ -30,7 +30,6 @@ let explode str =
   in
   exp (String.length str - 1) []
 
-
 (* val insert: string -> trie -> trie *)
 let insert word t  = 
     let cl = explode  word
@@ -62,10 +61,8 @@ let ex_trie = Node(false,[('r',r)])
 let trie_containing_rotor = insert "rotor" ex_trie
 let trie_containing_rotor_and_blut = insert "blut" trie_containing_rotor
 
-
-
-
 let suffix_char s c = s ^ String.make 1 c 
+let prefix_char s c = String.make 1 c ^ s
 
 (* this is a wrong attempt as it only creates all leaf words. It is interesting nonetheless *)
 (* let rec collectWords trie = match trie with
@@ -89,7 +86,6 @@ let merge trieA trieB =
 
 
 (* playing around with merge *)
-
 let rot = (Node(true,[])) (* rot node *)
 let ro = Node (false, [('t',rot)]) (* ro node *)
 let r  = Node(false,[('o', ro     )]) (* r node *)
