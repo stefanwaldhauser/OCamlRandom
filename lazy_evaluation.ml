@@ -1,5 +1,3 @@
-(*BASED ON: http://cl-informatik.uibk.ac.at/teaching/ws16/fp/material/fpln.pdf *)
-
 (* Ocaml adopts eager evaluation by default, 
 but it is possible to simulate lazy evaluation/call-by-need*)
 
