@@ -19,7 +19,7 @@ let take n ll =
     in
     (aux n ll []) |> List.rev
 
-(*filter_lazy takes a predicate and a lazy list. it returns a new lazy
+(*filter_lazy takes a predicate function and a lazy list. it returns a new lazy
   list that contains only those elements that satisfy the given predicate *)
 let rec filter_lazy p (Cons(a,tl_f)) =  
                       if p a then Cons(a,(fun () -> filter_lazy p (tl_f ())))  
