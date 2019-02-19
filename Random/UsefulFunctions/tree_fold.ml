@@ -26,5 +26,5 @@ let ex_tree = Node(10,[sub_tree_five;(Node(20,[]));(Node(4,[])); sub_tree_fiftee
 
 
 let rec dfs_fold f acc (Node(a,c_l)) = match c_l with
-									   | [] -> f acc a
-									   | c_l -> c_l |> List.fold_left (fun acc ct -> dfs_fold f acc ct ) (f acc a)
+			| [] -> f acc a
+			| c_l -> c_l |> List.fold_left (fun acc ct -> dfs_fold f acc ct ) (f acc a)
