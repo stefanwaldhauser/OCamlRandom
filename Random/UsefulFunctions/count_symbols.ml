@@ -11,7 +11,7 @@ let count_symbols s =
 		 result |> List.sort (fun (_,countA) (_,countB) -> countA - countB)
 		 
 
-let count_symbols ?(cmp = compare) (lis) = 
+let count_elements ?(cmp = compare) (lis) = 
   let fr cmp l = 
     let rec enum acc c = function
       | []  -> acc
