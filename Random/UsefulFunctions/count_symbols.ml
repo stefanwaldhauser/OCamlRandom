@@ -10,4 +10,18 @@ let count_symbols s =
 		 in
 		 result |> List.sort (fun (_,countA) (_,countB) -> countA - countB)
 		 
-	
+
+let count_symbols ?(cmp = compare) (lis) = 
+  let fr cmp l = 
+    let rec enum acc c = function
+      | []  -> acc
+      | [x]  -> (x, c)::acc
+      | a:: (b::xs as t)  -> (
+          if cmp a b = 0 then enum acc (c + 1) t else enum ((a, c + 1)::acc) 1 t)
+    in enum [] 1 l |> List.rev 
+  in 
+  List.sort cmp lis |> fr cmp;;
+
+(*test*)
+count_symbols ["a";"a";"a";"a";"b";"c";"c";"a";"a";"d";"e";"e";"e";"e"];;
+(**result = [("a", 7); ("b", 2); ("c", 3); ("d", 2); ("e", 4)]*)
