@@ -15,13 +15,13 @@ let count_symbols ?(cmp = compare) (lis) =
   let fr cmp l = 
     let rec enum acc c = function
       | []  -> acc
-      | [x]  -> (x, c)::acc
+      | [x]  -> (x, c + 1)::acc
       | a:: (b::xs as t)  -> (
-          if cmp a b = 0 then enum acc (c + 1) t else enum ((a, c + 1)::acc) 1 t)
-    in enum [] 1 l |> List.rev 
+          if cmp a b = 0 then enum acc (c + 1) t else enum ((a, c + 1)::acc) 0 t)
+    in enum [] 0 l |> List.rev 
   in 
   List.sort cmp lis |> fr cmp;;
 
-(*test*)
+
 count_symbols ["a";"a";"a";"a";"b";"c";"c";"a";"a";"d";"e";"e";"e";"e"];;
-(**result = [("a", 7); ("b", 2); ("c", 3); ("d", 2); ("e", 4)]*)
+(**result = [("a", 6); ("b", 1); ("c", 2); ("d", 1); ("e", 4)]*)
